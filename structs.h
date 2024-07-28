@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   numbers.h                                          :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shdorsh <shdorsh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/27 10:46:26 by abredimu          #+#    #+#             */
-/*   Updated: 2024/07/28 16:14:02 by shdorsh          ###   ########.fr       */
+/*   Created: 2024/07/28 16:04:43 by shdorsh           #+#    #+#             */
+/*   Updated: 2024/07/28 16:48:08 by shdorsh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef NUMBERS_H 
-# define NUMBERS_H
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
-int	count_number_digits(long num);
+typedef struct s_input
+{
+	char	*number;
+	int		number_length;
+	char	*dict;
+}	t_input;
+
+t_input	new_input(char *number_string, char *dict);
 
 #endif

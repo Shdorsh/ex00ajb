@@ -44,6 +44,18 @@ long	string_to_number(char *string)
 	return (result);
 }
 
+int	count_num_chars(char *string)
+{
+	int	i;
+
+	i = 0;
+	while (string[i])
+	{
+		i++;
+	}
+	return (i);
+}
+
 char	*find_substring(char *string, char *substring)
 {
 	int	i;

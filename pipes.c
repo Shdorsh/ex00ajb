@@ -3,26 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   pipes.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abredimu <abredimu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shdorsh <shdorsh@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 12:58:55 by abredimu          #+#    #+#             */
-/*   Updated: 2024/07/27 14:38:17 by abredimu         ###   ########.fr       */
+/*   Updated: 2024/07/28 19:02:37 by shdorsh          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dict.h"
 #include "strings.h"
+#include "slice.h"
+#include "structs.h"
 #include <stdio.h>
 
-int	valid_number_pipe(char *number_string, char *dict)
+int	parse_dict_pipe(t_input input)
 {
-	if (!is_string_number(number_string))
+	int		i;
+	int		is_invalid;
+
+	i = 0;
+	is_invalid = parse_dict(input.dict);
+	if (is_invalid)
+	{
+		print("Dict Error\n");
+		return (-1);
+	}
+	return (0);
+}
+
+int	valid_number_pipe(t_input input)
+{
+	int	number_digits;
+
+	if (!is_string_number(input.number))
 	{
 		print("Error\n");
 		return (-1);
 	}
-	print(dict);
-	return (0);
+	number_digits = count_num_chars(input.number);
+	return (parse_dict_pipe(input));
 }
 
 int	dictionary_pipe(char argument_count, char **arguments)
@@ -46,6 +65,5 @@ int	dictionary_pipe(char argument_count, char **arguments)
 		print("Dict Error\n");
 		return (-1);
 	}
-	printf("Number char: %s\n\n\n", number_string);
-	return (valid_number_pipe(number_string, buffer));
+	return (valid_number_pipe(new_input(number_string, buffer)));
 }
